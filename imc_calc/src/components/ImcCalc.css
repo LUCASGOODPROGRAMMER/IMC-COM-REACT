@@ -1,0 +1,44 @@
+#calc-container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    box-shadow: 0 2px 5px #89b0ae;
+    padding: 10px 5px;
+}
+
+.form-inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-control {
+    margin-bottom: 20px;
+    display: grid;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    opacity: 0.8;
+}
+
+.form-control:hover{
+    opacity: 1;
+}
+
+::placeholder{
+    transition: opacity .2s ease-in-out;
+}
+
+:focus::placeholder{
+    opacity: 0;
+}
+
+.form-control input{
+    height: 50px;
+    padding: 0 20px;
+    font-size: 1.2rem;
+}
+
+.action-control {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 20px;
+}

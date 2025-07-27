@@ -1,0 +1,11 @@
+.container{
+  width: clamp(320px, 50vw, 500px);
+  background-color: #BEE3DB;
+  padding: 30px 40px;
+}
+
+@media (max-width: 730px){
+  .container{
+    padding: 30px 20px;
+  }
+}

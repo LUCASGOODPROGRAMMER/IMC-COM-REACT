@@ -1,0 +1,21 @@
+button{
+    text-transform: uppercase;
+    padding: 0.8rem 1.5rem;
+    background-color: #276be9da;
+    color: white;
+    cursor: pointer;
+    flex:1;
+    transition: background-color .4s ease-in-out
+}
+
+button:hover{
+    background-color: #276be9;
+}
+
+#clear-btn {
+    background-color: #6127e9da;
+}
+
+#clear-btn:hover{
+    background-color: #6127e9;
+}
