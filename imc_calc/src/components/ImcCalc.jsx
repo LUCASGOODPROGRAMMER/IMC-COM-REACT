@@ -2,30 +2,30 @@ import { useState } from "react";
 import "./ImcCalc.css";
 import Button from "./Button";
 
-const ImcCalc = () => {
+const ImcCalc = ({ calcImc }) => {
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
 
-  console.log(height, weight);
+  //console.log(height, weight);
 
   const clearForm = (e) => {
-    e.preventDefault()
-    setHeight("")
-    setWeight("")
-  }
+    e.preventDefault();
+    setHeight("");
+    setWeight("");
+  };
 
   const validDigits = (text) => {
-    return text.replace(/[^0-9,]/g, "")
-  }
+    return text.replace(/[^0-9,]/g, "");
+  };
 
   const handleHeightChange = (e) => {
-    const updateValue = validDigits(e.target.value)
+    const updateValue = validDigits(e.target.value);
     setHeight(updateValue);
-  }
+  };
   const handleWeightChange = (e) => {
-    const updateValue = validDigits(e.target.value)
+    const updateValue = validDigits(e.target.value);
     setWeight(updateValue);
-  }
+  };
 
   return (
     <div id="calc-container">
@@ -38,7 +38,7 @@ const ImcCalc = () => {
               type="text"
               name="height"
               placeholder="1,76"
-              onChange={(e) => handleHeightChange(e)}
+              onChange={(e) => handleHeightChange(e)} //onChange um evento que é disparado sempre que seu valor muda
               value={height}
             />
           </div>
@@ -53,8 +53,13 @@ const ImcCalc = () => {
             />
           </div>
           <div className="action-control">
-            <Button id="calc-btn" text="Calcular" />
-            <Button id="clear-btn" text="Limpar" action={clearForm}/>
+            <Button
+              id="calc-btn"
+              text="Calcular"
+              action={(e) => calcImc(e, height, weight)}
+            />
+            {/** função anônima para o método só exutar após os argumentos serem devidamente passados */}
+            <Button id="clear-btn" text="Limpar" action={clearForm} />
           </div>
         </div>
       </form>
