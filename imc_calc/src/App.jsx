@@ -9,18 +9,35 @@ function App() {
   const calcImc = (e, height, weight) => {
     e.preventDefault(); // impedir o site de reiniciar
 
-    if(!weight || !height) return // se não for true total eu retorno
+    if (!weight || !height) return; // se não for true total eu retorno
 
-    const weightFloat = +weight.replace(",",".")
-    const heightFloat = +height.replace(",",".")
+    const weightFloat = +weight.replace(",", ".");
+    const heightFloat = +height.replace(",", ".");
 
-    const imcResult = (weightFloat / Math.pow(heightFloat, 2)).toFixed(1)
+    const imcResult = (weightFloat / Math.pow(heightFloat, 2)).toFixed(1);
 
-    setImc(imcResult)
+    setImc(imcResult);
+
+    data.forEach((item) => {
+      if(imcResult >= item.min && imcResult <= item.max) {
+        setInfo(item.info)
+        setInfoClass(item.infoClass)
+      }
+    })
+
+    if (!info) return;
 
     //console.log(height, weight)
     //console.log("Evento disparado");
   };
+
+  const resetCalc = (e) =>{
+    e.preventDefault()
+
+    setImc("")
+    setInfo("")
+    setInfoClass("")
+  }
 
   const [imc, setImc] = useState("");
   const [info, setInfo] = useState("");
@@ -29,7 +46,11 @@ function App() {
   return (
     <>
       <div className="container">
-        {!imc ? <ImcCalc calcImc={calcImc} /> : <ImcTable data={data}/>}
+        {!imc ? (
+          <ImcCalc calcImc={calcImc} />
+        ) : (
+          <ImcTable data={data} imc={imc} info={info} infoClass={infoClass} resetCalc={resetCalc}/>
+        )}
       </div>
     </>
   );
